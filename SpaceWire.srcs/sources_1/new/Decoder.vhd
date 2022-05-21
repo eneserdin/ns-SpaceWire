@@ -87,7 +87,7 @@ RxNchar      <= datachar;
 RxTimeCode   <= timecode;
 
 
-process(RxClk)
+process(RxClk,rst)
 begin
     if rising_edge(RxClk) then
         temp_sample(1) <= din;
@@ -97,7 +97,10 @@ begin
         temp_sample(0) <= din;
     end if;
     
-    if rising_edge(RxClk) then
+    
+    if rst = '1' then
+        NullArray <= (others => '0');
+    elsif rising_edge(RxClk) then
         sample_data <= temp_sample;
         
         NullArray <= NullArray(5 downto 0) & sample_data;
@@ -110,8 +113,6 @@ process(RxClk)
 begin
     if rising_edge(RxClk) then
         FirstNull <= '0';
-
-
         sample_data_2r <= sample_data_r;
         if NullArray = "01110100" then
             FirstNull <= '1';
@@ -121,7 +122,7 @@ end process;
         
 -- Now we need to do the parity part
 
-process(RxClk)
+process(RxClk,rst)
 procedure CHECK_PARITY_PROCEDURE is begin
     if parity_var = '0' then -- parity is zero upto now
         if    sample_data_2r(0) = '1' and sample_data_2r(1) = '0' then -- ok
@@ -141,7 +142,9 @@ procedure CHECK_PARITY_PROCEDURE is begin
     end if;
 end procedure;
 begin
-    if rising_edge(RxClk) then
+    if rst = '1' then
+        token_cs <= st_waiting_for_Null;
+    elsif rising_edge(RxClk) then
         parityError <= '0';
         GotNull <= '0';
         GotFCT <= '0';

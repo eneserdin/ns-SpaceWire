@@ -45,6 +45,14 @@ reg dot =0;
 reg sot =0;
 
 
+reg[7:0] datain;
+reg[7:0] TCin;
+
+reg dissable = 0;
+
+
+
+
 main_fsm 
     #(.freq(10000))
     uut(
@@ -53,7 +61,9 @@ main_fsm
     .enabled(enabled),
     .LinkStart(LinkStart),
     .AutoStart(Autostart),
-
+    
+    .datain(datain),
+    .TCin(TCin),
 
     .fct_req(fct_req),
     .data_req(data_req),
@@ -79,10 +89,22 @@ begin
 end    
 
 
+initial
+begin
+    dissable <= 1;
+    #80us dissable <= 0;
+end
+
+
 always 
 begin
-    #0.1 din <= dot; sin <= sot;
+    #0.1 din <= (dot & dissable); sin <= (sot & dissable);
 end
+
+
+
+
+
 
 initial
 begin
@@ -104,12 +126,47 @@ end
 
 initial
 begin 
+datain <= 8'b00110011;
 
 #50us
 @(posedge clk);
 data_req <= 1;
 @(posedge data_ack)
 data_req <= 0;
+
+
+#1us
+datain <= 8'b01011011;
+@(posedge clk);
+data_req <= 1;
+@(posedge data_ack)
+data_req <= 0;
+
+
+
+for (int ii=1; ii<10; ii++)
+begin
+    #1us
+    datain <= 8'b01011011;
+    @(posedge clk);
+    data_req <= 1;
+    @(posedge data_ack)
+    data_req <= 0;
+end
+
+
+
+for (int ii=1; ii<8; ii++)
+begin
+    #1us
+    TCin <= 8'b01001001;
+    @(posedge clk);
+    tc_req <= 1;
+    @(posedge tc_ack)
+    tc_req <= 0;
+end
+
+
 end
 
 

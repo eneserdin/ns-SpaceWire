@@ -40,6 +40,9 @@ entity Encoder is port(
     ;FCT_enabled : in std_logic
     ;SendNULLs : in std_logic
     
+    ;datain : in std_logic_vector(7 downto 0)
+    ;TCin   : in std_logic_vector(7 downto 0)
+    
     ;fct_req  : in std_logic
     ;data_req : in std_logic
     ;tc_req   : in std_logic
@@ -79,16 +82,12 @@ signal dout : std_logic := '0';
 signal sout : std_logic := '0';
 signal sync_enable : std_logic := '0';
 
---signal fct_req : std_logic := '0';
 signal fct_req_r : std_logic := '0';
 signal data_req_r : std_logic := '0';
---signal data_req : std_logic := '0';
---signal tc_req : std_logic := '0';
 signal tc_req_r : std_logic := '0';
 
 signal loader_parity : std_logic := '0';
 
--- signal simulation_reqs : std_logic_vector(3 downto 0) := "0001";
 
 
 constant NULL_LOADED    : std_logic_vector := "001";
@@ -100,23 +99,14 @@ signal LOADED_WAS : std_logic_vector(2 downto 0) := (others => '0');
 
 begin
 
---fct_req <= not fct_req after 6 us;
---data_req <= not fct_req after 6 us;
-
-
---fct_req <= simulation_reqs(3);
---data_req <= simulation_reqs(2);
---tc_req <= simulation_reqs(1);
-
--- simulation_reqs <= simulation_reqs(2 downto 0) & simulation_reqs(3) after 6 us;
-
-process(clk) begin
+process(clk,rst) begin
 if rising_edge(clk) then
     dot <= dout;
     sot <= sout;
     if rst ='1' then
         TxClk <= '0';
         clk_en <= '0';
+        CNT10 <= 0;
     else
         clk_en <= '0';
         if CNT10 = 0 then
@@ -131,14 +121,12 @@ end if;
 end process;
 
 
-process(clk)
-
-variable preload : std_logic_vector(bufferToSend'range);
+process(clk,rst)
 ---------
-impure function loader_parity_func(a : in std_logic_vector(bufferToSend'range); b: in integer) return std_logic is
+impure function loader_parity_func(a : in std_logic_vector(7 downto 0)) return std_logic is
     variable localpar : std_logic := '0';
     begin
-    for ii in 0 to b-3 loop
+    for ii in 0 to 7 loop
         localpar := localpar xor a(ii);
     end loop;
     return localpar;
@@ -161,16 +149,16 @@ end procedure;
 
 procedure LOAD_DATA_procedure is begin
     bit_cnt <= 9;
-    bufferToSend <= "0000" & (loader_parity xor '1')  & '0' & "01100100"; -- this is data
-    loader_parity <= '1';  
+    bufferToSend <= "0000" & (loader_parity xor '1')  & '0' & datain(0)& datain(1)& datain(2)& datain(3)& datain(4)& datain(5)& datain(6)& datain(7); -- this is data
+    loader_parity <= loader_parity_func(datain);  
     LOADED_WAS <= DATA_LOADED;
     data_ack    <= '1';    
 end procedure;
 
 procedure LOAD_TC_procedure is begin
     bit_cnt <= 13;
-    bufferToSend <= (loader_parity xor '0') & "11110" & "01100100"; -- this is timecode
-    loader_parity <= '1';  
+    bufferToSend <= (loader_parity xor '0') & "11110" & TCin(0)& TCin(1)& TCin(2)& TCin(3)& TCin(4)& TCin(5)& TCin(6)& TCin(7); -- this is timecode
+    loader_parity <= loader_parity_func(TCin);  
     LOADED_WAS  <= TC_LOADED;
     tc_ack      <= '1';
 end procedure;
@@ -207,16 +195,12 @@ begin
                     fct_req_r <= fct_req;
                     data_req_r <= data_req;
                     tc_req_r <= tc_req;
-                    bufferToSend <= preload;
                     
                     if fct_req = '1' and FCT_enabled = '1' then
-                    --if fct_req_r = '1' and FCT_enabled = '1' then
                         LOAD_FCT_procedure;
                     elsif data_req = '1' then
-                    --elsif data_req_r = '1' then
                         LOAD_DATA_procedure;
                     elsif tc_req = '1' then
-                    --elsif tc_req_r = '1' then
                         LOAD_TC_procedure;
                     else
                         LOAD_NULL_procedure;

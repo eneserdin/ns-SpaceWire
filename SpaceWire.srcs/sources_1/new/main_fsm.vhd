@@ -43,7 +43,11 @@ entity main_fsm is
         ;enabled : in std_logic
         ;LinkStart : in std_logic
         ;AutoStart : in std_logic
-        
+ 
+    ;datain : in std_logic_vector(7 downto 0)
+    ;TCin   : in std_logic_vector(7 downto 0)
+
+ 
     ;fct_req  : in std_logic
     ;data_req : in std_logic
     ;tc_req   : in std_logic
@@ -74,6 +78,9 @@ signal Disabled : std_logic;
 signal ReceiveCredit : integer range 0 to 127 := 0;
 signal TransmitCredit : integer range 0 to 127 := 0;
 
+
+signal RstDecoder : std_logic;
+signal RstEncoder : std_logic;
 
 --===============================================
 component us_counter is
@@ -164,7 +171,10 @@ component Encoder is port(
     
     ;FCT_enabled : in std_logic
     ;SendNULLs : in std_logic
-    
+ 
+    ;datain : in std_logic_vector(7 downto 0)
+    ;TCin   : in std_logic_vector(7 downto 0)
+   
     ;fct_req  : in std_logic
     ;data_req : in std_logic
     ;tc_req   : in std_logic
@@ -179,18 +189,12 @@ component Encoder is port(
     );
 end component;
 
---    signal fct_req  : std_logic := '0';
---    signal data_req : std_logic := '0';
---    signal tc_req   : std_logic := '0';
     signal NULL_SENT: std_logic := '0';
     signal FCT_SENT: std_logic := '0';
 
     signal FCT_enabled : std_logic;
     signal SendNULLs : std_logic;
---    signal fct_ack  : std_logic;
---    signal data_ack : std_logic;
---    signal tc_ack   : std_logic;
-
+    
 --===========================
 
 component syncher port(
@@ -283,7 +287,7 @@ RxClkmodule : RxClk port map(
 SPWDecoderModule : Decoder port map(
          MainClk      => '0'
         ,RxClk        => RxClk_sig
-        ,rst          => rst
+        ,rst          => RstDecoder
         ,din          => din
         ,GotNull      => GotNull 
         ,GotFCT       => GotFCT
@@ -342,8 +346,9 @@ end process;
 ReceiveCreditProcess: process(clk)
 begin
     if rising_edge(clk) then
+
         if GotFCTSync = '1' then
-            if fsm_cs = Connecting or fsm_cs = Run then
+            if fsm_cs = Connecting or fsm_cs = Run then -- maybe we can remove that part
                 ReceiveCredit <= ReceiveCredit + 8;
             end if;
         end if;
@@ -354,7 +359,7 @@ begin
             end if;
         end if;
         
-        if ReceiveCredit > 56 then
+        if ReceiveCredit > 56 or ReceiveCredit < 0 then
             CreditError <= '1'; else
             CreditError <= '0'; end if;
             
@@ -373,12 +378,17 @@ end process;
 
 SPWEncoderModule : Encoder port map(
      clk        => clk
-    ,rst        => rst
+    ,rst        => RstEncoder
     ,dot        => dot
     ,sot        => sot
     
     ,FCT_enabled => FCT_enabled
     ,SendNULLs => SendNULLs
+    
+    
+    ,datain => datain
+    ,TCin => TCin
+
 
     ,fct_req    => fct_req 
     ,data_req   => data_req
@@ -421,20 +431,27 @@ begin
             fsm_cs_r <= fsm_cs;
             FCT_enabled <= '0';
             SendNULLs <= '0'; -- kind of enable TX
+
+            RstDecoder <= '0';
+            RstEncoder <= '0';
             
             case fsm_cs is
                 
                 when ErrorReset =>
+                    
+                    RstDecoder <= '1';
+                    RstEncoder <= '1';
+                    
                     -- normal transaction
                     if tick_6_4us = '1' and enabled = '1' then
                         fsm_cs <= ErrorWait;
                     end if;
                      
                     GotNullSyncAlready <='0'; -- we need this only in started state
-                    NULL_SENTAlready <='0';  -- we need this only in started AutoStart 
+                    NULL_SENTAlready <='0';  -- we need this only in started state 
 
-                    GotFCTSyncAlready <='0'; -- we need this only in started state
-                    FCT_SENTAlready <='0';  -- we need this only in started AutoStart 
+                    GotFCTSyncAlready <='0'; -- we need this only in Connecting state
+                    FCT_SENTAlready <='0';  -- we need this only in Connecting state 
 
                     
                 when ErrorWait =>
@@ -562,46 +579,8 @@ begin
         end if;
     end if;
 end process;
-
---=================================================================
---=================================================================
---=================================================================
-
-
-
---process(clk)
---procedure pseudoaction(action: in string; val: in integer) is begin
---    if simcnt = val then
---        case action is
---            when "NULL" =>
---                GOT_NULL <='1';
---            when "FCT" => 
---                GOT_FCT <='1';
---            when others =>
---                NULL;
---        end case;
---    end if;
---end procedure;
-
-
---begin
---    if rising_edge(clk) then
---        GOT_NULL <='0';
---        GOT_FCT <='0';
---        simcnt <= simcnt + 1;
-        
---        pseudoaction("NULL",10);
---        pseudoaction("NULL",197);
-        
-
-        
---    end if;
---end process;
-
-
-
-
-
+            
+            
 
 
 end Behavioral;
