@@ -44,20 +44,23 @@ entity main_fsm is
         ;LinkStart : in std_logic
         ;AutoStart : in std_logic
  
-    ;datain : in std_logic_vector(7 downto 0)
-    ;TCin   : in std_logic_vector(7 downto 0)
-
- 
-    ;fct_req  : in std_logic
-    ;data_req : in std_logic
-    ;tc_req   : in std_logic
-
-    ;fct_ack  : out std_logic
-    ;data_ack : out std_logic
-    ;tc_ack   : out std_logic    
+        ;datain : in std_logic_vector(7 downto 0)
+        ;TCin   : in std_logic_vector(7 downto 0)
+    
+     
+        ;fct_req  : in std_logic
+        ;data_req : in std_logic
+        ;tc_req   : in std_logic
+    
+        ;fct_ack  : out std_logic
+        ;data_ack : out std_logic
+        ;tc_ack   : out std_logic    
         
         ;dot    : out std_logic
         ;sot    : out std_logic
+        
+        ;dataout : out std_logic_vector(17 downto 0)
+        ;datavalid : out std_logic
     );
 end main_fsm;
 
@@ -70,7 +73,7 @@ signal fsm_cs,fsm_cs_r : fsm_type := ErrorReset;
 signal simcnt : integer := 0;
 
 
-signal GOT_NULL, GOT_FCT : std_logic := '0';
+-- signal GOT_NULL, GOT_FCT : std_logic := '0';
 
 signal Disabled : std_logic;
 
@@ -228,7 +231,6 @@ END component;
     signal RxCacheDout  : std_logic_vector(17 downto 0);
     signal RxCacheFull  : std_logic;
     signal RxCacheEmpty : std_logic;
-
 --============================
 
 
@@ -267,7 +269,7 @@ Disabled <= not enabled;
 
 FSMcounterModule : us_counter
     generic map(
-        freq => 100_000
+        freq => freq
     )
     port map(
          clk => clk
@@ -472,7 +474,7 @@ begin
                 when Ready =>
                     --normal transaction
                     if enabled = '1' then
-                        if LinkStart = '1' or (Autostart = '1' and GOT_NULL = '1') then
+                        if LinkStart = '1' or (Autostart = '1' and GotNullSync = '1') then
                             fsm_cs <= Started;
                         end if;
                     end if;
@@ -579,7 +581,20 @@ begin
         end if;
     end if;
 end process;
-            
+
+
+ReadFromCacheProcess: process(clk)
+begin
+    if rising_edge(clk) then
+        RxCacheRdEn <= '0';
+        datavalid <= RxCacheRdEn;
+        dataout <= RxCacheDout;
+        if RxCacheEmpty = '0' then
+            RxCacheRdEn <= '1';
+        end if;
+    end if;
+end process;
+
             
 
 

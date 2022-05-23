@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="main_fsm_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="main_fsm_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="30.000001 us"></ZoomEndTime>
+      <Cursor1Time time="30.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="196"></NameColumnWidth>
+      <ValueColumnWidth column_width="95"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="28" />
+   <wave_markers>
+      <marker time="12890000" label="" />
+   </wave_markers>
+   <wvobject type="divider" fp_name="divider184">
+      <obj_property name="label">Decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/RxClk" type="logic">
+      <obj_property name="ElementShortName">RxClk</obj_property>
+      <obj_property name="ObjectShortName">RxClk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/din" type="logic">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/GotNull" type="logic">
+      <obj_property name="ElementShortName">GotNull</obj_property>
+      <obj_property name="ObjectShortName">GotNull</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/GotFCT" type="logic">
+      <obj_property name="ElementShortName">GotFCT</obj_property>
+      <obj_property name="ObjectShortName">GotFCT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/GotEEP" type="logic">
+      <obj_property name="ElementShortName">GotEEP</obj_property>
+      <obj_property name="ObjectShortName">GotEEP</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/GotEOP" type="logic">
+      <obj_property name="ElementShortName">GotEOP</obj_property>
+      <obj_property name="ObjectShortName">GotEOP</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/GOT_TIMECODE" type="logic">
+      <obj_property name="ElementShortName">GOT_TIMECODE</obj_property>
+      <obj_property name="ObjectShortName">GOT_TIMECODE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/GOT_DATA" type="logic">
+      <obj_property name="ElementShortName">GOT_DATA</obj_property>
+      <obj_property name="ObjectShortName">GOT_DATA</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/parityError" type="logic">
+      <obj_property name="ElementShortName">parityError</obj_property>
+      <obj_property name="ObjectShortName">parityError</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/ESCError" type="logic">
+      <obj_property name="ElementShortName">ESCError</obj_property>
+      <obj_property name="ObjectShortName">ESCError</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/RxNchar" type="array">
+      <obj_property name="ElementShortName">RxNchar[7:0]</obj_property>
+      <obj_property name="ObjectShortName">RxNchar[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/RxTimeCode" type="array">
+      <obj_property name="ElementShortName">RxTimeCode[7:0]</obj_property>
+      <obj_property name="ObjectShortName">RxTimeCode[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/ThereIsRxActivity" type="logic">
+      <obj_property name="ElementShortName">ThereIsRxActivity</obj_property>
+      <obj_property name="ObjectShortName">ThereIsRxActivity</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/sample_data" type="array">
+      <obj_property name="ElementShortName">sample_data[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_data[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/sample_data_r" type="array">
+      <obj_property name="ElementShortName">sample_data_r[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_data_r[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/sample_data_2r" type="array">
+      <obj_property name="ElementShortName">sample_data_2r[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_data_2r[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/temp_sample" type="array">
+      <obj_property name="ElementShortName">temp_sample[1:0]</obj_property>
+      <obj_property name="ObjectShortName">temp_sample[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/NullArray" type="array">
+      <obj_property name="ElementShortName">NullArray[7:0]</obj_property>
+      <obj_property name="ObjectShortName">NullArray[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/token_cs" type="other">
+      <obj_property name="ElementShortName">token_cs</obj_property>
+      <obj_property name="ObjectShortName">token_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/parity_var" type="logic">
+      <obj_property name="ElementShortName">parity_var</obj_property>
+      <obj_property name="ObjectShortName">parity_var</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/timecode" type="array">
+      <obj_property name="ElementShortName">timecode[7:0]</obj_property>
+      <obj_property name="ObjectShortName">timecode[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/datachar" type="array">
+      <obj_property name="ElementShortName">datachar[7:0]</obj_property>
+      <obj_property name="ObjectShortName">datachar[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/grayc" type="array">
+      <obj_property name="ElementShortName">grayc[2:0]</obj_property>
+      <obj_property name="ObjectShortName">grayc[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/RxToggle" type="logic">
+      <obj_property name="ElementShortName">RxToggle</obj_property>
+      <obj_property name="ObjectShortName">RxToggle</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/RxToggle_r" type="logic">
+      <obj_property name="ElementShortName">RxToggle_r</obj_property>
+      <obj_property name="ObjectShortName">RxToggle_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/main_fsm_tb/uut/SPWDecoderModule/FirstNull" type="logic">
+      <obj_property name="ElementShortName">FirstNull</obj_property>
+      <obj_property name="ObjectShortName">FirstNull</obj_property>
+   </wvobject>
+</wave_config>

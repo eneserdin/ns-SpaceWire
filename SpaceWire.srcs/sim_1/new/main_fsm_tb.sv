@@ -48,13 +48,15 @@ reg sot =0;
 reg[7:0] datain;
 reg[7:0] TCin;
 
+reg[17:0] dataout;
+reg datavalid;
 reg dissable = 0;
 
 
 
 
 main_fsm 
-    #(.freq(10000))
+    #(.freq(100000))
     uut(
     .clk(clk),
     .rst(rst),
@@ -76,7 +78,10 @@ main_fsm
     .din(din),
     .sin(sin),
     .dot(dot),
-    .sot(sot)
+    .sot(sot),
+    
+    .dataout(dataout),
+    .datavalid(datavalid)
     );
 
 
@@ -144,7 +149,7 @@ data_req <= 0;
 
 
 
-for (int ii=1; ii<10; ii++)
+for (int ii=1; ii<5; ii++)
 begin
     #1us
     datain <= 8'b01011011;

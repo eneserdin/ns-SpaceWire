@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TwoSpaceWire_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TwoSpaceWire_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="101.000000 us"></ZoomEndTime>
+      <Cursor1Time time="101.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="196"></NameColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="48" />
+   <wvobject type="divider" fp_name="divider509">
+      <obj_property name="label">SPW1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1clk" type="logic">
+      <obj_property name="ElementShortName">SPW1clk</obj_property>
+      <obj_property name="ObjectShortName">SPW1clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1rst" type="logic">
+      <obj_property name="ElementShortName">SPW1rst</obj_property>
+      <obj_property name="ObjectShortName">SPW1rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1enabled" type="logic">
+      <obj_property name="ElementShortName">SPW1enabled</obj_property>
+      <obj_property name="ObjectShortName">SPW1enabled</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1LinkStart" type="logic">
+      <obj_property name="ElementShortName">SPW1LinkStart</obj_property>
+      <obj_property name="ObjectShortName">SPW1LinkStart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1Autostart" type="logic">
+      <obj_property name="ElementShortName">SPW1Autostart</obj_property>
+      <obj_property name="ObjectShortName">SPW1Autostart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1fct_req" type="logic">
+      <obj_property name="ElementShortName">SPW1fct_req</obj_property>
+      <obj_property name="ObjectShortName">SPW1fct_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1data_req" type="logic">
+      <obj_property name="ElementShortName">SPW1data_req</obj_property>
+      <obj_property name="ObjectShortName">SPW1data_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1tc_req" type="logic">
+      <obj_property name="ElementShortName">SPW1tc_req</obj_property>
+      <obj_property name="ObjectShortName">SPW1tc_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1fct_ack" type="logic">
+      <obj_property name="ElementShortName">SPW1fct_ack</obj_property>
+      <obj_property name="ObjectShortName">SPW1fct_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1data_ack" type="logic">
+      <obj_property name="ElementShortName">SPW1data_ack</obj_property>
+      <obj_property name="ObjectShortName">SPW1data_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1tc_ack" type="logic">
+      <obj_property name="ElementShortName">SPW1tc_ack</obj_property>
+      <obj_property name="ObjectShortName">SPW1tc_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1din" type="logic">
+      <obj_property name="ElementShortName">SPW1din</obj_property>
+      <obj_property name="ObjectShortName">SPW1din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1sin" type="logic">
+      <obj_property name="ElementShortName">SPW1sin</obj_property>
+      <obj_property name="ObjectShortName">SPW1sin</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1dot" type="logic">
+      <obj_property name="ElementShortName">SPW1dot</obj_property>
+      <obj_property name="ObjectShortName">SPW1dot</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1sot" type="logic">
+      <obj_property name="ElementShortName">SPW1sot</obj_property>
+      <obj_property name="ObjectShortName">SPW1sot</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1datain" type="array">
+      <obj_property name="ElementShortName">SPW1datain[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SPW1datain[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1TCin" type="array">
+      <obj_property name="ElementShortName">SPW1TCin[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SPW1TCin[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1dataout" type="array">
+      <obj_property name="ElementShortName">SPW1dataout[17:0]</obj_property>
+      <obj_property name="ObjectShortName">SPW1dataout[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1datavalid" type="logic">
+      <obj_property name="ElementShortName">SPW1datavalid</obj_property>
+      <obj_property name="ObjectShortName">SPW1datavalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1dissable" type="logic">
+      <obj_property name="ElementShortName">SPW1dissable</obj_property>
+      <obj_property name="ObjectShortName">SPW1dissable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1/fsm_cs" type="other">
+      <obj_property name="ElementShortName">fsm_cs</obj_property>
+      <obj_property name="ObjectShortName">fsm_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1/ReceiveCredit" type="other">
+      <obj_property name="ElementShortName">ReceiveCredit</obj_property>
+      <obj_property name="ObjectShortName">ReceiveCredit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW1/GotNullSync" type="logic">
+      <obj_property name="ElementShortName">GotNullSync</obj_property>
+      <obj_property name="ObjectShortName">GotNullSync</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider510">
+      <obj_property name="label">SPW2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2clk" type="logic">
+      <obj_property name="ElementShortName">SPW2clk</obj_property>
+      <obj_property name="ObjectShortName">SPW2clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2rst" type="logic">
+      <obj_property name="ElementShortName">SPW2rst</obj_property>
+      <obj_property name="ObjectShortName">SPW2rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2enabled" type="logic">
+      <obj_property name="ElementShortName">SPW2enabled</obj_property>
+      <obj_property name="ObjectShortName">SPW2enabled</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2LinkStart" type="logic">
+      <obj_property name="ElementShortName">SPW2LinkStart</obj_property>
+      <obj_property name="ObjectShortName">SPW2LinkStart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2Autostart" type="logic">
+      <obj_property name="ElementShortName">SPW2Autostart</obj_property>
+      <obj_property name="ObjectShortName">SPW2Autostart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2fct_req" type="logic">
+      <obj_property name="ElementShortName">SPW2fct_req</obj_property>
+      <obj_property name="ObjectShortName">SPW2fct_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2data_req" type="logic">
+      <obj_property name="ElementShortName">SPW2data_req</obj_property>
+      <obj_property name="ObjectShortName">SPW2data_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2tc_req" type="logic">
+      <obj_property name="ElementShortName">SPW2tc_req</obj_property>
+      <obj_property name="ObjectShortName">SPW2tc_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2fct_ack" type="logic">
+      <obj_property name="ElementShortName">SPW2fct_ack</obj_property>
+      <obj_property name="ObjectShortName">SPW2fct_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2data_ack" type="logic">
+      <obj_property name="ElementShortName">SPW2data_ack</obj_property>
+      <obj_property name="ObjectShortName">SPW2data_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2tc_ack" type="logic">
+      <obj_property name="ElementShortName">SPW2tc_ack</obj_property>
+      <obj_property name="ObjectShortName">SPW2tc_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2din" type="logic">
+      <obj_property name="ElementShortName">SPW2din</obj_property>
+      <obj_property name="ObjectShortName">SPW2din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2sin" type="logic">
+      <obj_property name="ElementShortName">SPW2sin</obj_property>
+      <obj_property name="ObjectShortName">SPW2sin</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2dot" type="logic">
+      <obj_property name="ElementShortName">SPW2dot</obj_property>
+      <obj_property name="ObjectShortName">SPW2dot</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2sot" type="logic">
+      <obj_property name="ElementShortName">SPW2sot</obj_property>
+      <obj_property name="ObjectShortName">SPW2sot</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2datain" type="array">
+      <obj_property name="ElementShortName">SPW2datain[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SPW2datain[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2TCin" type="array">
+      <obj_property name="ElementShortName">SPW2TCin[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SPW2TCin[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2dataout" type="array">
+      <obj_property name="ElementShortName">SPW2dataout[17:0]</obj_property>
+      <obj_property name="ObjectShortName">SPW2dataout[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2datavalid" type="logic">
+      <obj_property name="ElementShortName">SPW2datavalid</obj_property>
+      <obj_property name="ObjectShortName">SPW2datavalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2dissable" type="logic">
+      <obj_property name="ElementShortName">SPW2dissable</obj_property>
+      <obj_property name="ObjectShortName">SPW2dissable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2/fsm_cs" type="other">
+      <obj_property name="ElementShortName">fsm_cs</obj_property>
+      <obj_property name="ObjectShortName">fsm_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2/ReceiveCredit" type="other">
+      <obj_property name="ElementShortName">ReceiveCredit</obj_property>
+      <obj_property name="ObjectShortName">ReceiveCredit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TwoSpaceWire_tb/SPW2/GotNullSync" type="logic">
+      <obj_property name="ElementShortName">GotNullSync</obj_property>
+      <obj_property name="ObjectShortName">GotNullSync</obj_property>
+   </wvobject>
+</wave_config>
