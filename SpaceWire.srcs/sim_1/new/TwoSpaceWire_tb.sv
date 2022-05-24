@@ -115,7 +115,7 @@ reg SPW2dissable = 0;
 
 
 main_fsm 
-    #(.freq(50000))
+    #(.freq(100000))
     SPW2(
     .clk(SPW2clk),
     .rst(SPW2rst),
@@ -154,8 +154,8 @@ end
 
 always
 begin
-    #10 SPW2clk <=0;
-    #10 SPW2clk <=1;
+    #5 SPW2clk <=0;
+    #5 SPW2clk <=1;
 end    
 
 

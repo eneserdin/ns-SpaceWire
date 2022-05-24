@@ -48,7 +48,7 @@ end us_counter;
 architecture Behavioral of us_counter is 
 
 
-constant clk_period : real := 1_000_000.0/freq; -- in nsec
+constant clk_period : real := 1_000_000.0/real(freq); -- in nsec
 constant us6_4time : integer := integer(6_400.0/clk_period);
 constant us12_8time : integer := integer(12_800.0/clk_period);
 

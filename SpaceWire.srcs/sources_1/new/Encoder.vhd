@@ -31,7 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Encoder is port(
+entity Encoder is
+    generic(
+        freq : integer := 100_000
+    );
+    port(
      clk : in std_logic
     ;rst : in std_logic
     ;dot : out std_logic
@@ -59,9 +63,9 @@ end Encoder;
 
 architecture Behavioral of Encoder is
 
-constant MAIN_FREQ : integer := 100_000; --in KHz
+constant MAIN_FREQ : real := real(freq); --in KHz
 
-constant MBps10 : integer := 10_000; --in KHz
+constant MBps10 : real := 10_000.0; --in KHz
 
 constant CLK_Period : real := 1.0/MAIN_FREQ; -- in nsec
 constant MY10Period : real := (1.0/MBps10)/2.0;

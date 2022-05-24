@@ -166,7 +166,11 @@ end component;
     signal ThereIsRxActivity_p1,ThereIsRxActivity_p2 : std_logic:='0';
 --=====================================================
 
-component Encoder is port(
+component Encoder is
+    generic(
+        freq : integer
+    );
+    port(
      clk : in std_logic
     ;rst : in std_logic
     ;dot : out std_logic
@@ -378,7 +382,9 @@ end process;
 --
 
 
-SPWEncoderModule : Encoder port map(
+SPWEncoderModule : Encoder
+    generic map(freq => freq)
+    port map(
      clk        => clk
     ,rst        => RstEncoder
     ,dot        => dot
